@@ -10,10 +10,9 @@ import androidx.room.PrimaryKey
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import java.util.UUID
 
 @Entity(tableName = "to_do_list_table")
-class TaskItem (
+data class TaskItem (
     @ColumnInfo(name = "name") var name: String,
     @ColumnInfo(name = "desc") var desc: String,
     @ColumnInfo(name = "dueTimeString") var dueTimeString: String?, //can be null

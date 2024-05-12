@@ -63,10 +63,15 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener{
             taskItem.name.contains(query, true)
         }
         filteredList?.let {
-            (binding.todoListRecyclerView.adapter as TaskItemAdapter).taskItems = it
+            val updatedList = it.map { taskItem ->
+                // Preserve the completion status when updating the list
+                taskItem.copy()
+            }
+            (binding.todoListRecyclerView.adapter as TaskItemAdapter).taskItems = updatedList
             binding.todoListRecyclerView.adapter?.notifyDataSetChanged()
         }
     }
+
 
     override fun editTaskItem(taskItem: TaskItem) {
         NewTaskSheetFragment(taskItem).show(supportFragmentManager,"newTaskTag")

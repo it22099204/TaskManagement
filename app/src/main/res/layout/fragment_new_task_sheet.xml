@@ -26,9 +26,9 @@
         android:layout_marginHorizontal="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/name"
             android:hint="@string/name">
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -44,26 +44,26 @@
         android:layout_marginHorizontal="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/desc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/desc"
             android:hint="@string/taskDesc">
         </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTimePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnTimePicker"
         android:layout_gravity="center"
         android:layout_marginHorizontal="20dp"
         android:text="@string/select_time"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnSave"
         android:layout_gravity="center"
         android:layout_marginHorizontal="20dp"
         android:backgroundTint="@color/black"

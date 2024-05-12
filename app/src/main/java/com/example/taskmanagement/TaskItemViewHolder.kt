@@ -19,28 +19,32 @@ class TaskItemViewHolder(
     private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun bindTaskItem(taskItem: TaskItem){
+    fun bindTaskItem(taskItem: TaskItem) {
         binding.name.text = taskItem.name
 
-        if(taskItem.isCompleted()){
-            binding.name.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            binding.dueTime.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+        if (taskItem.isCompleted()) {
+            // Apply strike-through only to completed tasks
+            binding.name.paintFlags = binding.name.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            binding.dueTime.paintFlags = binding.dueTime.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        } else {
+            // Remove strike-through for non-completed tasks
+            binding.name.paintFlags = binding.name.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            binding.dueTime.paintFlags = binding.dueTime.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
 
         binding.btnComplete.setImageResource(taskItem.imageResource())
         binding.btnComplete.setColorFilter(taskItem.imageColor(context))
 
-        binding.btnComplete.setOnClickListener{
+        binding.btnComplete.setOnClickListener {
             clickListener.completeTaskItem(taskItem)
         }
-        binding.taskCellContainer.setOnClickListener{
+        binding.taskCellContainer.setOnClickListener {
             clickListener.editTaskItem(taskItem)
         }
 
-        if(taskItem.dueTime() != null){
+        if (taskItem.dueTime() != null) {
             binding.dueTime.text = timeFormat.format(taskItem.dueTime())
-        }
-        else{
+        } else {
             binding.dueTime.text = ""
         }
     }
