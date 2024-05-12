@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TaskManagement</string>
+    <string name="taskName">Task Name :</string>
+    <string name="taskDesc">Task Description :</string>
+    <string name="btnNewTask">New Task</string>
+
+    <string name="newTask">New Task</string>
+    <string name="name">Name</string>
+    <string name="btnSave">Save</string>
+    <string name="place_holder">Place Holder</string>
+    <string name="select_time">Select Time</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="new_task">New Task</string>
+    <string name="my_to_do_list">My To Do List</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="delete_a_task">Delete a task</string>
+</resources>

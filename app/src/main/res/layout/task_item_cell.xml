@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:id="@+id/taskCellContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btnComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="15dp"
+            android:scaleY="1.5"
+            android:scaleX="1.5"
+            android:contentDescription="@string/checkbox"
+            android:src="@drawable/unchecked_24"
+            android:backgroundTint="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="@string/place_holder"
+            style="@style/TextAppearance.AppCompat.Title" />
+
+        <TextView
+            android:id="@+id/dueTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_gravity="center"
+            android:text="@string/place_holder"
+            style="@style/TextAppearance.AppCompat.Title" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/delete_24"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/delete_a_task"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="10dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
