@@ -14,6 +14,10 @@ interface TaskItemDao {
     @Query("SELECT * FROM to_do_list_table ORDER BY id ASC")
     fun allTaskItems(): Flow<List<TaskItem>>
 
+    //search
+    @Query("SELECT * FROM to_do_list_table WHERE name LIKE :query ORDER BY id ASC")
+    fun searchTaskItems(query: String): Flow<List<TaskItem>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTaskItem(taskItem: TaskItem)
 

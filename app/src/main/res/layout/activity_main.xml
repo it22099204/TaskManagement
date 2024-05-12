@@ -16,11 +16,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"/>
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search tasks"
+        android:layout_below="@id/topic"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/topic"
+        android:layout_below="@id/searchView"
         android:layout_marginBottom="72dp"
         android:backgroundTint="@color/design_default_color_background"/>
 

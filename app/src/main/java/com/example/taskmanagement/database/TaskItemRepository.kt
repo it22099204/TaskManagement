@@ -9,6 +9,10 @@ class TaskItemRepository(private val taskItemDao: TaskItemDao) {
 
     val allTaskItems: Flow<List<TaskItem>> = taskItemDao.allTaskItems()
 
+    fun searchTaskItems(query: String): Flow<List<TaskItem>> {
+        return taskItemDao.searchTaskItems("%$query%")
+    }
+
     @WorkerThread
     suspend fun insertTaskItem(taskItem: TaskItem){
         taskItemDao.insertTaskItem(taskItem)

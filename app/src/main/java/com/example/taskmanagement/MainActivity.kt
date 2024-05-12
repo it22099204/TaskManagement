@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskmanagement.database.TodoApplication
 import com.example.taskmanagement.databinding.ActivityMainBinding
@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener{
             NewTaskSheetFragment(null).show(supportFragmentManager,"newTaskTag")
         }
         setRecyclerView()
+        setupSearchView()
     }
 
     private fun setRecyclerView() {
@@ -37,6 +38,33 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener{
                 layoutManager= LinearLayoutManager(applicationContext)
                 adapter = TaskItemAdapter(it,mainActivity)
             }
+        }
+    }
+
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    newText?.let { query ->
+                        search(query)
+                    }
+                    return true
+                }
+            }
+        )
+    }
+
+    private fun search(query: String) {
+        val filteredList = taskViewModel.taskItems.value?.filter { taskItem ->
+            taskItem.name.contains(query, true)
+        }
+        filteredList?.let {
+            (binding.todoListRecyclerView.adapter as TaskItemAdapter).taskItems = it
+            binding.todoListRecyclerView.adapter?.notifyDataSetChanged()
         }
     }
 
