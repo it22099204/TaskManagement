@@ -16,14 +16,14 @@ class TaskItemAdapter(
 
 ): RecyclerView.Adapter<TaskItemViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemViewHolder { // Method for creating a new ViewHolder
         val from = LayoutInflater.from(parent.context)
         val binding = TaskItemCellBinding.inflate(from,parent,  false)
         return TaskItemViewHolder(parent.context,binding,clickListener,taskItems)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TaskItemViewHolder, position: Int) {// Method for binding data to a ViewHolder
         holder.bindTaskItem(taskItems[position])
         holder.binding.btnDelete.setOnClickListener {
             showDeleteConfirmationDialog(taskItems[position])

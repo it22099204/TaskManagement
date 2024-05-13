@@ -19,7 +19,7 @@ class TaskItemViewHolder(
     private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun bindTaskItem(taskItem: TaskItem) {
+    fun bindTaskItem(taskItem: TaskItem) {  // Method for binding task item data to the ViewHolder
         binding.name.text = taskItem.name
 
         if (taskItem.isCompleted()) {
@@ -32,12 +32,14 @@ class TaskItemViewHolder(
             binding.dueTime.paintFlags = binding.dueTime.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
         }
 
+        // Setting icon and color for the complete button
         binding.btnComplete.setImageResource(taskItem.imageResource())
         binding.btnComplete.setColorFilter(taskItem.imageColor(context))
 
         binding.btnComplete.setOnClickListener {
             clickListener.completeTaskItem(taskItem)
         }
+        // Setting click listener for editing the task item
         binding.taskCellContainer.setOnClickListener {
             clickListener.editTaskItem(taskItem)
         }
@@ -52,6 +54,7 @@ class TaskItemViewHolder(
     //delete part
     init {
         binding.btnDelete.setOnClickListener {
+            // Getting the position of the clicked item
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 clickListener.deleteTaskItem(taskItems[position])

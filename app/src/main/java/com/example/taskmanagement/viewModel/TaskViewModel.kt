@@ -15,6 +15,7 @@ import java.time.LocalDate
 
 
 class TaskViewModel(private val repository: TaskItemRepository):ViewModel() {
+    // LiveData for observing the list of task items
     var taskItems: LiveData<List<TaskItem>> = repository.allTaskItems.asLiveData()
 
     fun addTaskItem(newTask: TaskItem) = viewModelScope.launch{
@@ -38,8 +39,9 @@ class TaskViewModel(private val repository: TaskItemRepository):ViewModel() {
 }
 
 class TaskItemModelFactory(private val repository: TaskItemRepository): ViewModelProvider.Factory{
+    // Factory class for creating TaskViewModel instances
 
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {   // Method for creating ViewModel instances
         if(modelClass.isAssignableFrom(TaskViewModel::class.java))
             return TaskViewModel(repository) as T
 

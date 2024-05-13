@@ -16,8 +16,8 @@ import java.time.LocalTime
 
 class NewTaskSheetFragment (private var taskItem: TaskItem?) : BottomSheetDialogFragment() {
 
-    private lateinit var binding: FragmentNewTaskSheetBinding
-    private lateinit var taskViewModel: TaskViewModel
+    private lateinit var binding: FragmentNewTaskSheetBinding   // View binding for the fragment layout
+    private lateinit var taskViewModel: TaskViewModel   // ViewModel for managing task data
     private var dueTime: LocalTime? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -49,6 +49,7 @@ class NewTaskSheetFragment (private var taskItem: TaskItem?) : BottomSheetDialog
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
+    // Method for opening the time picker dialog.
     private fun openTimePicker() {
         if(dueTime == null)
             dueTime = LocalTime.now()
@@ -62,6 +63,7 @@ class NewTaskSheetFragment (private var taskItem: TaskItem?) : BottomSheetDialog
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
+    // Method for updating the time picker button text
     private fun updateTimeButtonText() {
         binding.btnTimePicker.text = String.format("%02d:%02d", dueTime!!.hour,dueTime!!.minute)
     }

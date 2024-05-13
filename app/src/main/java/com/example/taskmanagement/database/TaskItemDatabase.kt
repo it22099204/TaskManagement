@@ -16,7 +16,7 @@ abstract class TaskItemDatabase : RoomDatabase(){
         @Volatile
         private var INSTANCE: TaskItemDatabase? = null
 
-        fun getDatabase(context: Context): TaskItemDatabase{
+        fun getDatabase(context: Context): TaskItemDatabase{   //singleton instance  using a synchronized to have thread safety
             return INSTANCE?: synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
